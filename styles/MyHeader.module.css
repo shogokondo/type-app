@@ -1,0 +1,15 @@
+.header{
+  /* ヘッダー（サイズ・背景色・両横padding） */
+  background-color: black;
+  height: 78px;
+  padding: 0 10px;
+  /* ヘッダーの子要素へのstyle */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header_icon{
+  /* ヘッダーアイコンのフォントスタイル */
+  font-size: 24px;
+  color: white;
+}

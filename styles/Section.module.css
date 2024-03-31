@@ -1,0 +1,27 @@
+  .main_h1{
+    /* 見出しの上下 */
+    margin-top: 100px;
+    margin-bottom: 50px;
+    /* 見出しのテキストスタイル */
+    text-align: center;
+    font-size: 28px;
+  }
+  .main_container{
+    /* 子要素へのスタイル */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .main_container_content{
+    /* 要素のサイズと背景の指定 */
+    width: 470px;
+    height: 100px;
+    background-color: grey;
+    
+    /* 文字列を中央揃え */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
