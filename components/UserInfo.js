@@ -19,7 +19,7 @@ export default function UserInfo() {
                 <h1 className={styles.userName}>{user.displayName}</h1>
                 <img src={user.photoURL} className={styles.userImg}/>
                 <button className={styles.loginButton} onClick={signOutwithGoogle}>ログアウト</button>
-                <Link href="hello"><div className={styles.createPracticeLink}>演習の作成</div></Link>
+                <Link href="hello" className={styles.createPracticeLink}>演習の作成</Link>
             </>):
             (<>
                 <h1 className={styles.userName}>ゲスト</h1>
