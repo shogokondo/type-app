@@ -23,7 +23,7 @@ export default function UserInfo() {
             </>):
             (<>
                 <h1 className={styles.userName}>ゲスト</h1>
-                <img src={"https://interactive-examples.mdn.mozilla.net/media/examples/plumeria-146x200.jpg"} className={styles.userImg}/>
+                <img src="/img/guest.jpeg"className={styles.userImg}/>
                 <button className={styles.loginButton} onClick={signInwithGoogle}>googleアカウントでサインイン</button>
             </>)}
         </div>
