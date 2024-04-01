@@ -32,7 +32,7 @@ export default function Section() {
             <>
                 <h1 className={styles.main_h1}>コンテンツが見つかりませんでした。</h1>
                 <div className={styles.main_container}>
-                    <div className={styles.main_container_content} >練習一覧に戻る</div>
+                    <Link href={"/"} className={styles.main_container_content} >練習一覧に戻る</Link>
                 </div>
             </>
         )}

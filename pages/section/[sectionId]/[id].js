@@ -39,6 +39,7 @@ export default function PlayGame() {
       const badSound = document.getElementById("badSound")
       const correctSound = document.getElementById("correctSound")
       const questionStartSound = document.getElementById("questionStartSound")
+      const questionCorrectSound = document.getElementById("questionCorrectSound")
       // 文字の入力に関する処理
       if((isStart && content.question[currentText].main[currentChara] === event.key )|| (event.key === "Enter" && content.question[currentText].main[currentChara]==="\n")){
         setCurrentChara((prev) => {
@@ -55,10 +56,12 @@ export default function PlayGame() {
       }else if(currentChara+1 > content.question[currentText].main.length && event.key === content.question[currentText].answer){
         if(currentText+1 >= content.question.length){
           setIsViewResult(true)
+          playSound(questionCorrectSound)
         }else{
           setIsKeyFinish(false)
           setCurrentChara(0)
           setCurrentText(prev => prev+1)
+          playSound(questionCorrectSound)
         }
       }else if(
         isStart &&
@@ -100,7 +103,21 @@ export default function PlayGame() {
     element.currentTime = 0;
     element.play()
   }
-
+  function answerClick(title){
+    if(title === content.question[currentText].answer){
+      if(currentText+1 >= content.question.length){
+        setIsViewResult(true)
+        playSound(questionCorrectSound)
+      }else{
+        setIsKeyFinish(false)
+        setCurrentChara(0)
+        setCurrentText(prev => prev+1)
+        playSound(questionCorrectSound)
+      }
+    }else{
+      playSound(badSound)
+    }
+  }
   function switchView(){
     if(content && !isStart){
       // スタートボタン画面
@@ -148,8 +165,8 @@ export default function PlayGame() {
             <h2 className={styles.answerPrompt}>{content.question[currentText].prompt}</h2>
             <div className={styles.answerContainer}>
               {content.question[currentText].isImg ? 
-              (<>{content.question[currentText].options.map((item,index)=>(<button key={index} className={styles.answerOptions}>{item.title}.　<img src={item.text}></img></button>))}</>):
-              (<>{content.question[currentText].options.map((item,index)=>(<button key={index} className={styles.answerOptions}>{item.title}.　{item.text}</button>))}</>)}
+              (<>{content.question[currentText].options.map((item,index)=>(<button onClick={()=>answerClick(item.title)} key={index} className={styles.answerOptions}>{item.title}.　<img src={item.text}></img></button>))}</>):
+              (<>{content.question[currentText].options.map((item,index)=>(<button onClick={()=>answerClick(item.title)} key={index} className={styles.answerOptions}>{item.title}.　{item.text}</button>))}</>)}
             </div>
           </div>
         ):(<></>)}
@@ -165,6 +182,7 @@ export default function PlayGame() {
       <audio src="/sounds/不正解.mp3" preload='auto' id="badSound"></audio>
       <audio src="/sounds/正解.mp3" preload='auto' id="correctSound"></audio>
       <audio src="/sounds/問題出題.mp3" preload='auto' id="questionStartSound"></audio>
+      <audio src="/sounds/問題正解.mp3" preload='auto' id="questionCorrectSound"></audio>
       {switchView()}
     </main>
   </>)
